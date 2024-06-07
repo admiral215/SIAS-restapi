@@ -1,6 +1,6 @@
 package org.sttdb.entities;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,19 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity(name = "thesis")
-public class Thesis extends PanacheEntityBase {
-    @Id
-    @Column(name = "id", nullable = false)
-    private String id;
-
-    @Column(name = "student_id", nullable = false)
-    private String studentId;
-
-    @Column(name = "first_lecturer_id", nullable = false)
-    private String firstLecturerId;
-
-    @Column(name = "second_lecturer_id")
-    private String secondLecturerId;
+public class Thesis extends PanacheEntity {
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -36,15 +24,15 @@ public class Thesis extends PanacheEntityBase {
     private Boolean isApproved;
 
     @ManyToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
     @ManyToOne
-    @JoinColumn(name = "first_lecturer_id", referencedColumnName = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "first_lecturer_id", nullable = false)
     private Lecturer firstLecturer;
 
     @ManyToOne
-    @JoinColumn(name = "second_lecturer_id", referencedColumnName = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "second_lecturer_id", nullable = false)
     private Lecturer secondLecturer;
 
     @OneToMany(mappedBy = "thesis")

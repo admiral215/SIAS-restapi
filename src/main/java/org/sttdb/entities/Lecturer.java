@@ -24,22 +24,22 @@ public class Lecturer extends PanacheEntityBase {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "birth_date")
+    @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
 
-    @Column(name = "gender")
+    @Column(name = "gender", nullable = false)
     private String gender;
 
-    @Column(name = "birth_city")
+    @Column(name = "birth_city", nullable = false)
     private String birthCity;
 
-    @Column(name = "address")
+    @Column(name = "address", nullable = false)
     private String address;
 
     @Column(name = "register_date", nullable = false)

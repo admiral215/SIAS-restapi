@@ -15,10 +15,10 @@ public class LecturerMajor {
     @EmbeddedId
     private LecturerMajorId id;
 
-    @Column(name = "set_date")
+    @Column(name = "set_date", nullable = false)
     private LocalDate setDate;
 
-    @Column(name = "is_active")
+    @Column(name = "is_active", nullable = false)
     private Boolean isActive;
 
     @ManyToOne

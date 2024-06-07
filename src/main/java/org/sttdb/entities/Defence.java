@@ -1,6 +1,6 @@
 package org.sttdb.entities;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,20 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity(name = "defence")
-public class Defence extends PanacheEntityBase {
-    @Id
-    @Column(name = "id", nullable = false)
-    private String id;
-
-    @Column(name = "thesis_id", nullable = false)
-    private String thesisId;
-
-    @Column(name = "first_lecturer_id", nullable = false)
-    private String firstLecturerId;
-
-    @Column(name = "second_lecturer_id")
-    private String secondLecturerId;
-
+public class Defence extends PanacheEntity {
     @Column(name = "defence_date", nullable = false)
     private LocalDate defenceDate;
 
@@ -45,14 +32,14 @@ public class Defence extends PanacheEntityBase {
     private String defenceFile;
 
     @ManyToOne
-    @JoinColumn(name = "thesis_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "thesis_id", nullable = false)
     private Thesis thesis;
 
     @ManyToOne
-    @JoinColumn(name = "first_lecturer_id", referencedColumnName = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "first_lecturer_id", nullable = false)
     private Lecturer firstLecturer;
 
     @ManyToOne
-    @JoinColumn(name = "second_lecturer_id", referencedColumnName = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "second_lecturer_id", nullable = false)
     private Lecturer secondLecturer;
 }

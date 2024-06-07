@@ -1,6 +1,6 @@
 package org.sttdb.entities;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,24 +12,21 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity(name = "certificate")
-public class Certificate extends PanacheEntityBase {
-    @Id
-    @Column(name = "id", nullable = false)
-    private String id;
+public class Certificate extends PanacheEntity {
 
     @Column(name = "student_id", nullable = false)
     private String studentId;
 
-    @Column(name = "graduate_date")
+    @Column(name = "graduate_date", nullable = false)
     private LocalDate graduateDate;
 
-    @Column(name = "gpa")
+    @Column(name = "gpa", nullable = false)
     private Float gpa;
 
-    @Column(name = "degree")
+    @Column(name = "degree", nullable = false)
     private String degree;
 
-    @Column(name = "level")
+    @Column(name = "level", nullable = false)
     private String level;
 
     @ManyToOne

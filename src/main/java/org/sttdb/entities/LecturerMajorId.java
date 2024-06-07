@@ -13,5 +13,5 @@ import java.io.Serializable;
 @Embeddable
 public class LecturerMajorId implements Serializable {
     private String lecturerId;
-    private String majorId;
+    private Long majorId;
 }

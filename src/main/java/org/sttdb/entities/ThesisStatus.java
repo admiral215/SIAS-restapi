@@ -1,5 +1,6 @@
 package org.sttdb.entities;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,13 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity(name = "thesis_status")
-public class ThesisStatus {
-    @Id
-    @Column(name = "id", nullable = false)
-    private String id;
-
-    @Column(name = "thesis_id", nullable = false)
-    private String thesisId;
+public class ThesisStatus extends PanacheEntity {
 
     @Column(name = "status", nullable = false)
     private String status;
@@ -29,6 +24,6 @@ public class ThesisStatus {
     private LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "thesis_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "thesis_id", nullable = false)
     private Thesis thesis;
 }

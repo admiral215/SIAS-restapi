@@ -64,4 +64,9 @@ public class UserServiceImpl implements UserService {
         user.setPassword(dto.confirmPassword());
         userRepository.persist(user);
     }
+
+    @Override
+    public boolean isUsernameExist(String username) {
+        return userRepository.findByUsername(username) != null;
+    }
 }

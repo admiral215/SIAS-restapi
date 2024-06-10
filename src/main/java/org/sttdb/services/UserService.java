@@ -12,4 +12,6 @@ public interface UserService {
     void addUser(UserRegistrationRequestDto dto);
 
     void changePassword(UserChangePasswordRequestDto dto);
+
+    boolean isUsernameExist(String username);
 }

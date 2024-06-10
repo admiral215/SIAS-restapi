@@ -1,5 +1,6 @@
 package org.sttdb.resources;
 
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -27,7 +28,7 @@ public class UserResource {
     @POST
     @Path("registration")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createUser(UserRegistrationRequestDto dto) {
+    public Response createUser(@Valid UserRegistrationRequestDto dto) {
         service.addUser(dto);
         return Response.accepted()
                 .entity(UserResponseDto.builder()

@@ -1,10 +1,10 @@
 package org.sttdb.services.impl;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
 import org.sttdb.dto.user.UserChangePasswordRequestDto;
 import org.sttdb.dto.user.UserRegistrationRequestDto;
 import org.sttdb.dto.user.UserRegistrationResponseDto;
@@ -15,9 +15,10 @@ import org.sttdb.services.UserService;
 import java.util.List;
 
 @ApplicationScoped
-@AllArgsConstructor
 public class UserServiceImpl implements UserService {
-    private final UserRepository userRepository;
+
+    @Inject
+    UserRepository userRepository;
 
     @Override
     public List<UserRegistrationResponseDto> getUserByRole(String role) {

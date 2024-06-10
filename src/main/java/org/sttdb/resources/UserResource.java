@@ -10,7 +10,7 @@ import org.sttdb.dto.user.UserRegistrationRequestDto;
 import org.sttdb.dto.user.UserResponseDto;
 import org.sttdb.services.UserService;
 
-@Path("api/user")
+@Path("api/users")
 @AllArgsConstructor
 public class UserResource {
     private final UserService service;

@@ -35,6 +35,9 @@ public class Thesis extends PanacheEntity {
     @JoinColumn(name = "second_lecturer_id", nullable = false)
     private Lecturer secondLecturer;
 
+    @Column(name = "thesis_file", columnDefinition = "bytea")
+    private byte[] thesisFile;
+
     @OneToMany(mappedBy = "thesis")
     private List<ThesisStatus> thesisStatuses;
 

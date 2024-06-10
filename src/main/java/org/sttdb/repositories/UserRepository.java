@@ -1,11 +1,8 @@
 package org.sttdb.repositories;
 
-import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.sttdb.entities.User;
-
-import javax.management.relation.Role;
 import java.util.List;
 
 @ApplicationScoped

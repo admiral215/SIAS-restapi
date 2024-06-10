@@ -28,8 +28,8 @@ public class SeminarProposal extends PanacheEntity {
     @Column(name = "notes")
     private String notes;
 
-    @Column(name = "proposal_file")
-    private String proposalFile;
+    @Column(name = "proposal_file", columnDefinition = "bytea")
+    private byte[] proposalFile;
 
     @ManyToOne
     @JoinColumn(name = "thesis_id", nullable = false)

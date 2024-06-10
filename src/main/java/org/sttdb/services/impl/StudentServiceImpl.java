@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.sttdb.dto.student.StudentItemResponseDto;
 import org.sttdb.dto.student.StudentRegistrationRequestDto;
 import org.sttdb.dto.student.StudentUpdateRequestDto;
+import org.sttdb.entities.Gender;
 import org.sttdb.entities.Student;
 import org.sttdb.entities.User;
 import org.sttdb.repositories.StudentRepository;
@@ -17,6 +18,7 @@ import org.sttdb.services.StudentService;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Locale;
 
 @ApplicationScoped
 public class StudentServiceImpl implements StudentService {
@@ -27,7 +29,7 @@ public class StudentServiceImpl implements StudentService {
     UserRepository userRepository;
 
     @Override
-    public List<StudentItemResponseDto> getAllStudents(Integer pageIndex, Integer pageSize) {
+    public List<StudentItemResponseDto> getAllActiveStudents(Integer pageIndex, Integer pageSize) {
         if (pageIndex == null ) {
             pageIndex = 1;
         }
@@ -44,7 +46,7 @@ public class StudentServiceImpl implements StudentService {
                 .age(student.getAge())
                 .email(student.getEmail())
                 .address(student.getAddress())
-                .gender(student.getGender())
+                .gender(student.getGender().getLabel())
                 .birthCity(student.getBirthCity())
                 .phoneNumber(student.getPhoneNumber())
                 .totalCredits(student.getTotalCredits())
@@ -65,7 +67,7 @@ public class StudentServiceImpl implements StudentService {
                 .age(student.getAge())
                 .email(student.getEmail())
                 .address(student.getAddress())
-                .gender(student.getGender())
+                .gender(student.getGender().getLabel())
                 .birthCity(student.getBirthCity())
                 .phoneNumber(student.getPhoneNumber())
                 .totalCredits(student.getTotalCredits())
@@ -96,7 +98,7 @@ public class StudentServiceImpl implements StudentService {
                 .lastName(dto.lastName())
                 .birthDate(dto.birthDate())
                 .address(dto.address())
-                .gender(dto.gender())
+                .gender(Gender.valueOf(dto.gender().toUpperCase()))
                 .birthCity(dto.birthCity())
                 .phoneNumber(dto.phoneNumber())
                 .totalCredits(dto.totalCredits())
@@ -117,12 +119,12 @@ public class StudentServiceImpl implements StudentService {
         student.setFirstName(dto.firstName());
         student.setLastName(dto.lastName());
         student.setBirthDate(dto.birthDate());
-        student.setGender(dto.gender());
+        student.setGender(Gender.valueOf(dto.gender().toUpperCase()));
         student.setPhoneNumber(dto.phoneNumber());
         student.setTotalCredits(dto.totalCredits());
         student.setEmail(dto.email());
         student.setAddress(dto.address());
-        student.setGender(dto.gender());
+        student.setBirthCity(dto.birthCity());
         studentRepository.persist(student);
 
     }

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @NoArgsConstructor
@@ -34,7 +35,8 @@ public class Lecturer extends PanacheEntityBase {
     private LocalDate birthDate;
 
     @Column(name = "gender", nullable = false)
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @Column(name = "birth_city", nullable = false)
     private String birthCity;
@@ -64,4 +66,8 @@ public class Lecturer extends PanacheEntityBase {
 
     @OneToMany(mappedBy = "secondLecturer")
     private List<Thesis> secondLecturerTheses;
+
+    public Long getAge(){
+        return ChronoUnit.YEARS.between(birthDate, LocalDate.now());
+    }
 }

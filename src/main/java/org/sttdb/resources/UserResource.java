@@ -1,5 +1,6 @@
 package org.sttdb.resources;
 
+import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -11,9 +12,9 @@ import org.sttdb.dto.user.UserResponseDto;
 import org.sttdb.services.UserService;
 
 @Path("api/users")
-@AllArgsConstructor
 public class UserResource {
-    private final UserService service;
+    @Inject
+    UserService service;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

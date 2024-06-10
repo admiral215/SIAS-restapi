@@ -1,5 +1,6 @@
 package org.sttdb.resources;
 
+import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -12,14 +13,15 @@ import org.sttdb.services.StudentService;
 
 
 @Path("api/students")
-@AllArgsConstructor
 public class StudentResource {
-    private final StudentService service;
+
+    @Inject
+    StudentService service;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllStudents(@QueryParam("page") Integer pageIndex, @QueryParam("size") Integer pageSize) {
-        return Response.ok(service.getAllStudents(pageIndex, pageSize)).build();
+    public Response getAllStudents(@QueryParam("pageNumber") Integer pageIndex, @QueryParam("pageSize") Integer pageSize) {
+        return Response.ok(service.getAllActiveStudents(pageIndex, pageSize)).build();
     }
 
     @GET

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface StudentService {
 
-    List<StudentItemResponseDto> getAllStudents(Integer pageIndex, Integer pageSize);
+    List<StudentItemResponseDto> getAllActiveStudents(Integer pageIndex, Integer pageSize);
 
     StudentItemResponseDto getStudentById(String id);
 

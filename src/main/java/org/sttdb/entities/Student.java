@@ -35,7 +35,8 @@ public class Student extends PanacheEntityBase {
     private LocalDate birthDate;
 
     @Column(name = "gender", nullable = false)
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @Column(name = "birth_city", nullable = false)
     private String birthCity;

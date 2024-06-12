@@ -20,8 +20,10 @@ public class StudentResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllStudents(@QueryParam("pageNumber") Integer pageIndex, @QueryParam("pageSize") Integer pageSize) {
-        return Response.ok(service.getAllActiveStudents(pageIndex, pageSize)).build();
+    public Response getAllStudents(@QueryParam("pageNumber") Integer pageIndex,
+                                   @QueryParam("pageSize") Integer pageSize,
+                                   @QueryParam("name") String name) {
+        return Response.ok(service.getAllActiveStudents(pageIndex, pageSize, name)).build();
     }
 
     @GET

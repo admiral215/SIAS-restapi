@@ -28,14 +28,14 @@ public class LecturerServiceImpl implements LecturerService {
 
 
     @Override
-    public List<LecturerItemResponseDto> getAllActiveLecturers(Integer pageNumber, Integer pageSize) {
+    public List<LecturerItemResponseDto> getAllActiveLecturers(Integer pageNumber, Integer pageSize, String name) {
         if (pageNumber == null ) {
             pageNumber = 1;
         }
         if (pageSize == null ){
             pageSize = 2;
         }
-        var lecturers = lecturerRepository.findActiveLecturers(pageNumber,pageSize);
+        var lecturers = lecturerRepository.findActiveLecturers(pageNumber,pageSize, name);
         return lecturers.stream().map(lecturer -> LecturerItemResponseDto.builder()
                 .userId(lecturer.getUserId())
                 .firstName(lecturer.getFirstName())

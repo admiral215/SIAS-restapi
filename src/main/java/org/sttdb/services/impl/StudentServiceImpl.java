@@ -29,7 +29,7 @@ public class StudentServiceImpl implements StudentService {
     UserRepository userRepository;
 
     @Override
-    public List<StudentItemResponseDto> getAllActiveStudents(Integer pageIndex, Integer pageSize) {
+    public List<StudentItemResponseDto> getAllActiveStudents(Integer pageIndex, Integer pageSize, String name) {
         if (pageIndex == null ) {
             pageIndex = 1;
         }
@@ -37,7 +37,7 @@ public class StudentServiceImpl implements StudentService {
             pageSize = 2;
         }
 
-        var students = studentRepository.findActiveStudents(pageIndex,pageSize);
+        var students = studentRepository.findActiveStudents(pageIndex,pageSize, name);
         return students.stream().map(student -> StudentItemResponseDto.builder()
                 .userId(student.getUserId())
                 .firstName(student.getFirstName())

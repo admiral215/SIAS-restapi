@@ -7,7 +7,7 @@ import org.sttdb.dto.lecturer.LecturerUpdateRequestDto;
 import java.util.List;
 
 public interface LecturerService {
-    List<LecturerItemResponseDto> getAllActiveLecturers(Integer pageNumber, Integer pageSize);
+    List<LecturerItemResponseDto> getAllActiveLecturers(Integer pageNumber, Integer pageSize, String name);
 
     LecturerItemResponseDto getLecturerById(String lecturerId);
 

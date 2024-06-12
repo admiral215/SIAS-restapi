@@ -12,7 +12,6 @@ import org.sttdb.dto.lecturer.LecturerUpdateRequestDto;
 import org.sttdb.entities.Lecturer;
 import org.sttdb.services.LecturerService;
 
-@ApplicationScoped
 @Path("api/lecturers")
 public class LecturerResource {
     @Inject
@@ -21,8 +20,9 @@ public class LecturerResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getLecturers(@QueryParam("pageNumber") Integer pageNumber,
-                                 @QueryParam("pageSize") Integer pageSize){
-        return Response.ok(service.getAllActiveLecturers(pageNumber,pageSize)).build();
+                                 @QueryParam("pageSize") Integer pageSize,
+                                 @QueryParam("name") String name){
+        return Response.ok(service.getAllActiveLecturers(pageNumber,pageSize, name)).build();
     }
 
     @GET

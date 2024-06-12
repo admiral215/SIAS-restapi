@@ -33,7 +33,7 @@ public class LecturerServiceImpl implements LecturerService {
             pageNumber = 1;
         }
         if (pageSize == null ){
-            pageSize = 2;
+            pageSize = 10;
         }
         var lecturers = lecturerRepository.findActiveLecturers(pageNumber,pageSize, name);
         return lecturers.stream().map(lecturer -> LecturerItemResponseDto.builder()

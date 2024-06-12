@@ -34,7 +34,7 @@ public class StudentServiceImpl implements StudentService {
             pageIndex = 1;
         }
         if (pageSize == null ){
-            pageSize = 2;
+            pageSize = 10;
         }
 
         var students = studentRepository.findActiveStudents(pageIndex,pageSize, name);

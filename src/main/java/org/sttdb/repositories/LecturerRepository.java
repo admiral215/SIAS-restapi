@@ -5,7 +5,6 @@ import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import io.quarkus.panache.common.Parameters;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.sttdb.entities.Lecturer;
-import org.sttdb.entities.Student;
 
 import java.util.List;
 

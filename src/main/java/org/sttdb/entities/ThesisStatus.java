@@ -15,7 +15,8 @@ import java.time.LocalDate;
 public class ThesisStatus extends PanacheEntity {
 
     @Column(name = "status", nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private ThesisStatusEnum status;
 
     @Column(name = "description")
     private String description;
@@ -24,6 +25,6 @@ public class ThesisStatus extends PanacheEntity {
     private LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "thesis_id", nullable = false)
+    @JoinColumn(name = "thesis_id")
     private Thesis thesis;
 }

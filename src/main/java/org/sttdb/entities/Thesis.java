@@ -20,19 +20,19 @@ public class Thesis extends PanacheEntity {
     @Column(name = "abstract", nullable = false)
     private String abstractField;
 
-    @Column(name = "is_approved", nullable = false)
+    @Column(name = "is_approved")
     private Boolean isApproved;
 
     @ManyToOne
-    @JoinColumn(name = "student_id", nullable = false)
+    @JoinColumn(name = "student_id")
     private Student student;
 
     @ManyToOne
-    @JoinColumn(name = "first_lecturer_id", nullable = false)
+    @JoinColumn(name = "first_lecturer_id")
     private Lecturer firstLecturer;
 
     @ManyToOne
-    @JoinColumn(name = "second_lecturer_id", nullable = false)
+    @JoinColumn(name = "second_lecturer_id")
     private Lecturer secondLecturer;
 
     @Column(name = "thesis_file", columnDefinition = "bytea")

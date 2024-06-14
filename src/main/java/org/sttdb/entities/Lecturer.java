@@ -70,4 +70,8 @@ public class Lecturer extends PanacheEntityBase {
     public Long getAge(){
         return ChronoUnit.YEARS.between(birthDate, LocalDate.now());
     }
+
+    public String getFullName(){
+        return firstName + " " + lastName;
+    }
 }

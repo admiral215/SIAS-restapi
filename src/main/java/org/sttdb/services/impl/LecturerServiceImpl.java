@@ -5,6 +5,7 @@ import jakarta.inject.Inject;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.sttdb.configurations.PasswordUtils;
 import org.sttdb.dto.lecturer.LecturerItemResponseDto;
 import org.sttdb.dto.lecturer.LecturerRegistrationRequestDto;
 import org.sttdb.dto.lecturer.LecturerUpdateRequestDto;
@@ -86,7 +87,7 @@ public class LecturerServiceImpl implements LecturerService {
 
         var newUser = User.builder()
                 .username(dto.userId())
-                .password(dto.password())
+                .password(PasswordUtils.hashPassword(dto.password()))
                 .role("lecturer")
                 .build();
         userRepository.persist(newUser);

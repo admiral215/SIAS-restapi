@@ -1,5 +1,6 @@
 package org.sttdb.resources;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -13,6 +14,7 @@ import org.sttdb.services.StudentService;
 
 
 @Path("api/students")
+@RolesAllowed("student")
 public class StudentResource {
 
     @Inject

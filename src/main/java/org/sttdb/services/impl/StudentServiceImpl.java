@@ -6,6 +6,7 @@ import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.sttdb.configurations.PasswordUtils;
 import org.sttdb.dto.student.StudentItemResponseDto;
 import org.sttdb.dto.student.StudentRegistrationRequestDto;
 import org.sttdb.dto.student.StudentUpdateRequestDto;
@@ -87,7 +88,7 @@ public class StudentServiceImpl implements StudentService {
 
         var newUser = User.builder()
                 .username(dto.userId())
-                .password(dto.password())
+                .password(PasswordUtils.hashPassword(dto.password()))
                 .role("student")
                 .build();
         userRepository.persist(newUser);

@@ -5,6 +5,7 @@ import jakarta.inject.Inject;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.sttdb.configurations.PasswordUtils;
 import org.sttdb.dto.user.UserChangePasswordRequestDto;
 import org.sttdb.dto.user.UserRegistrationRequestDto;
 import org.sttdb.dto.user.UserRegistrationResponseDto;
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService {
         }
         var newUser = User.builder()
                 .username(dto.username())
-                .password(dto.password())
+                .password(PasswordUtils.hashPassword(dto.password()))
                 .role(dto.role())
                 .build();
 
@@ -56,13 +57,13 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw new EntityNotFoundException("User " + dto.username() + " does not exist");
         }
-        if (!user.getPassword().equals(dto.oldPassword())){
+        if (!PasswordUtils.verifyPassword(user.getPassword(), dto.oldPassword())){
             throw new IllegalArgumentException("Old password does not match");
         }
         if (!dto.newPassword().equals(dto.confirmPassword())){
             throw new IllegalArgumentException("Confirm password does not match");
         }
-        user.setPassword(dto.confirmPassword());
+        user.setPassword(PasswordUtils.hashPassword(dto.newPassword()));
         userRepository.persist(user);
     }
 

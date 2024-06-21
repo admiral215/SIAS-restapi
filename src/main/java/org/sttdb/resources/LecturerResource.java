@@ -1,5 +1,6 @@
 package org.sttdb.resources;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
@@ -9,7 +10,6 @@ import jakarta.ws.rs.core.Response;
 import org.sttdb.dto.lecturer.LecturerRegistrationRequestDto;
 import org.sttdb.dto.lecturer.LecturerResponseDto;
 import org.sttdb.dto.lecturer.LecturerUpdateRequestDto;
-import org.sttdb.entities.Lecturer;
 import org.sttdb.services.LecturerService;
 
 @Path("api/lecturers")
